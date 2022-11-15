@@ -1,0 +1,163 @@
+html {
+  height: 100%;
+  background-color: black;
+}
+
+/* setting for screen size bigger than 1024px */
+@media only screen and (min-width: 1024px) {
+  html {
+    width: 100%;
+    background-color: black;
+  }
+  html .set {
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+    grid-template-rows: 1fr;
+    align-items: flex-end;
+    align-items: center;
+    justify-items: center;
+    margin: 1% 1% 1% 1%;
+  }
+  html .set .main {
+    grid-area: 1/2/2/3;
+    width: 100%;
+    height: 100%;
+  }
+  html .set .scientific {
+    grid-area: 1/1/2/2;
+    width: 100%;
+    height: 100%;
+    display: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+  }
+  html .set .sci-features {
+    grid-area: 3/1/-1/2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+  html .set .sci-features .base2 {
+    grid-area: 4/1/4/-1;
+  }
+  html .set .history {
+    grid-area: 1/3/2/4;
+    width: 100%;
+    height: 100%;
+  }
+}
+/* finish media setting for 1024px plus */
+/* setting calculator division */
+.set {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60% 20% 20%;
+  margin: 3%;
+  height: 95%;
+  background-color: rgba(183, 145, 145, 0);
+}
+.set p {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.set button {
+  background-color: rgba(128, 128, 128, 0.661);
+}
+
+button:hover {
+  opacity: 0.5;
+}
+
+button:active {
+  opacity: 0.1;
+}
+
+/* main grid-cell*/
+.main {
+  grid-area: 1/1/2/2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  background-color: rgba(127, 255, 212, 0.619);
+}
+
+.left-buttons {
+  grid-area: 1/1/-1/2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.right-buttons {
+  grid-area: 1/-2/-1/-1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.numbers {
+  grid-area: 2/2/-1/-2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+.numbers .reset {
+  grid-area: -2/1/-1/-1;
+}
+
+.screenDisplay {
+  grid-area: 1/2/2/5;
+  background-color: yellow;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+#output {
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+/* scientific part */
+.scientific {
+  display: none;
+  grid-template-columns: 1fr;
+  grid-template-rows: 20% auto;
+  background-color: rgba(228, 109, 109, 0.844);
+  border: 1px solid black;
+}
+.scientific .sci-title {
+  grid-area: 1/1/2/2;
+  justify-self: center;
+  align-self: center;
+}
+.scientific .sci-features {
+  grid-area: 2/1/3/2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.scientific .base2 {
+  grid-area: 1/4/3/5;
+}
+
+/* history part */
+.history {
+  display: none;
+  grid-template-columns: 1fr;
+  grid-template-rows: 25% 75%;
+  background-color: rgba(255, 192, 203, 0.767);
+  border: 1px solid black;
+}
+.history .hist-title {
+  align-self: center;
+  justify-self: center;
+}
+.history .history-display {
+  overflow: auto;
+}
+.history .history-display p {
+  text-align: center;
+}
+
+/*# sourceMappingURL=styles.css.map */

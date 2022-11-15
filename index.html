@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html id="html">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCalculator</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body class="set">
+
+    <!-- main part of calculator -->
+    <div class="main">
+
+      <!-- output display -->
+      <div class="screenDisplay" id="screenDisplay">
+        <p id="output"></p>
+      </div>
+ 
+      <!-- left side buttons -->
+      <div class="left-buttons">
+        <button type="button" id="settingButton" class="settings-button"><p>&#9881</p></button>
+        <button type="button" id="infoButton" onclick="infoLog()" class="info-button"><p>&#9432</p></button>        
+        <button type="button" id="lightButton" onclick="lightMode()" class="light-button"><p>&#128262</p></button>
+        <button type="button" id="histButton" onclick="openHist()" class="hist-button"><p>&#128366</p></button>
+        <button type="button" id="sciButton" onclick="openSci()" class="scientific-mode"><p>&#8319&#8730x</p></button>
+        <button type="button" id="basicButton" onclick="basicMode()" class="basic-mode"><p>&#9729</p></button>
+      </div>
+
+      <!-- right side buttons -->
+      <div class="right-buttons">
+        <button type="button" id="eraseButton" onclick="backSpace()" class="erase-button"><p>&#9003</p></button>
+        <button type="button" id="divButton" onclick="checkOperator(div)" class="div"><p>&#247</p></button>        
+        <button type="button" id="multButton" onclick="checkOperator(mult)" class="mult"><p>&#215</p></button>
+        <button type="button" id="minusButton" onclick="checkOperator(minus)" class="minus"><p>&#8722</p></button>
+        <button type="button" id="plusButton" onclick="checkOperator(plus)" class="plus"><p>&#43</p></button>
+        <button type="button" id="equalButton" onclick="result()" class="equal"><p>=</p></button>
+      </div>
+        
+      <!-- numbers display -->
+      <div class="numbers">
+        <button type="button" id="seven" onclick="clickNumber(7)" class=""><p>7</p></button>
+        <button type="button" id="eight" onclick="clickNumber(8)" class=""><p>8</p></button>
+        <button type="button" id="nine" onclick="clickNumber(9)" class=""><p>9</p></button>
+        <button type="button" id="four" onclick="clickNumber(4)" class=""><p>4</p></button>
+        <button type="button" id="five" onclick="clickNumber(5)" class=""><p>5</p></button>
+        <button type="button" id="six" onclick="clickNumber(6)" class=""><p>6</p></button>
+        <button type="button" id="one" onclick="clickNumber(1)" class=""><p>1</p></button>
+        <button type="button" id="two" onclick="clickNumber(2)" class=""><p>2</p></button>
+        <button type="button" id="three" onclick="clickNumber(3)" class=""><p>3</p></button>
+        <button type="button" id="plusMinus" class=""><p>&#177</p></button>
+        <button type="button" id="zero" onclick="clickNumber(0)" class=""><p>0</p></button>
+        <button type="button" id="point" onclick="clickNumber('.')" class=""><p>.</p></button>
+        <button type="button" id="resetButton" onclick="resetButton()" class="reset"><p>C</p></button>
+      </div>
+    </div>
+    <!-- scientific part -->
+    <div class="scientific" id="sci">
+      <p class="sci-title">&#8319&#8730x Scientific</p>
+      <div class="sci-features">
+        <button type="button" id="xPower" class=""><p>x&#178</p></button>
+        <button type="button" id="sqrRoot" class=""><p>&#178&#8730x</p></button>
+        <button type="button" id="mod" onclick="mod()" class=""><p>mod</p></button>
+        <button type="button" id="xPowerY" class=""><p>xʸ</p></button>
+        <button type="button" id="yRootX" class=""><p>&#696&#8730x</p></button>
+        <button type="button" id="pi" class=""><p>&#960</p></button>
+        <button type="button" id="baseTwo" class="base2"><p>Base&#8322</p></button>
+      </div>
+
+    </div>
+    <!-- history log part -->
+    <div class="history" id="hist">
+      <p class="hist-title">&#128366 Operations log <br></p>
+      <div class="history-display">
+        <p id="histLog"></p>
+      </div>
+    </div>
+    <script src="./js/application.js"></script>
+    <script src="./js/calculator.js"></script>
+  </body>
+
+</html>
