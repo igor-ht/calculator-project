@@ -13,7 +13,6 @@ function resetButton() {
 
 // numbers click
 function clickNumber (n) {
-  console.log(n);
   const x = document.getElementById("output");
   if (n === '.'){
     const str = x.textContent;
@@ -81,28 +80,28 @@ function plus (x,y) {
   y = Number(y);
   const res = x + y
   const hist = document.getElementById('histLog');
-  hist.innerHTML += x + '+' + y + '=' + res + '<br>';
+  hist.innerHTML += x + ' + ' + y + ' = ' + res + '<br>';
   return res
 }
 // sub function
 function minus (x,y) {
   const res = x - y;
   const hist = document.getElementById('histLog');
-  hist.innerHTML += x + '-' + y + '=' + res + '<br>';
+  hist.innerHTML += x + ' - ' + y + ' = ' + res + '<br>';
   return res
 }
 // product function
 function mult (x,y) {
   const res = x * y;
   const hist = document.getElementById('histLog');
-  hist.innerHTML += x + 'x' + y + '=' + res + '<br>';
+  hist.innerHTML += x + ' x ' + y + ' = ' + res + '<br>';
   return res
 }
 // division function
 function div (x,y) {
   const res = x / y;
   const hist = document.getElementById('histLog');
-  hist.innerHTML += x + '/' + y + '=' + res + '<br>';
+  hist.innerHTML += x + ' / ' + y + ' = ' + res + '<br>';
   return res
 }
 // mod function
