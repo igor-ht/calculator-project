@@ -24,7 +24,7 @@ function openSci() {
   }
 }
 
-// opens only basic mode
+//  default basic mode
 function basicMode() {
   const x = document.getElementById("sci");
   const y = document.getElementById("hist");
@@ -32,7 +32,7 @@ function basicMode() {
   y.style = 'none';
 }
 
-// light/dark mode feature
+// light/dark mode feature for screen display
 function lightMode() {
   const x = document.getElementById("screenDisplay");
   if (x.style.backgroundColor !== 'black') { 

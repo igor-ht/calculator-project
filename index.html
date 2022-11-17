@@ -31,11 +31,11 @@
       <!-- right side buttons -->
       <div class="right-buttons">
         <button type="button" id="eraseButton" onclick="backSpace()" class="erase-button"><p>&#9003</p></button>
-        <button type="button" id="divButton" onclick="checkOperator(div)" class="div"><p>&#247</p></button>        
-        <button type="button" id="multButton" onclick="checkOperator(mult)" class="mult"><p>&#215</p></button>
-        <button type="button" id="minusButton" onclick="checkOperator(minus)" class="minus"><p>&#8722</p></button>
-        <button type="button" id="plusButton" onclick="checkOperator(plus)" class="plus"><p>&#43</p></button>
-        <button type="button" id="equalButton" onclick="result()" class="equal"><p>=</p></button>
+        <button type="button" id="divButton" onclick="clickOperator(div)" class="div"><p>&#247</p></button>        
+        <button type="button" id="multButton" onclick="clickOperator(mult)" class="mult"><p>&#215</p></button>
+        <button type="button" id="minusButton" onclick="clickOperator(minus)" class="minus"><p>&#8722</p></button>
+        <button type="button" id="plusButton" onclick="clickOperator(plus)" class="plus"><p>&#43</p></button>
+        <button type="button" id="equalButton" onclick="equal()" class="equal"><p>=</p></button>
       </div>
         
       <!-- numbers display -->
@@ -59,8 +59,8 @@
     <div class="scientific" id="sci">
       <p class="sci-title">&#8319&#8730x Scientific</p>
       <div class="sci-features">
-        <button type="button" id="xPower" class=""><p>x&#178</p></button>
-        <button type="button" id="sqrRoot" class=""><p>&#178&#8730x</p></button>
+        <button type="button" id="xPower" onclick="sqrPower()" class=""><p>x&#178</p></button>
+        <button type="button" id="sqrRoot" onclick="sqrRoot()" class=""><p>&#178&#8730x</p></button>
         <button type="button" id="mod" onclick="mod()" class=""><p>mod</p></button>
         <button type="button" id="xPowerY" class=""><p>xʸ</p></button>
         <button type="button" id="yRootX" class=""><p>&#696&#8730x</p></button>
@@ -71,7 +71,10 @@
     </div>
     <!-- history log part -->
     <div class="history" id="hist">
-      <p class="hist-title">&#128366 Operations log <br></p>
+      <div class="hist-title">
+        <button type="button" class="resetHistLog" onclick="resetHist">Refresh</button>
+        <p>&#128366 Operations log</p>
+      </div>
       <div class="history-display">
         <p id="histLog"></p>
       </div>

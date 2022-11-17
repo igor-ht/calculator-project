@@ -18,10 +18,20 @@ html {
     justify-items: center;
     margin: 1% 1% 1% 1%;
   }
+  html .set p {
+    font-size: x-large;
+    font-weight: bold;
+  }
   html .set .main {
     grid-area: 1/2/2/3;
     width: 100%;
     height: 100%;
+  }
+  html .set #output {
+    text-align: center;
+    overflow-wrap: break-word;
+    font-size: x-large;
+    font-weight: bold;
   }
   html .set .scientific {
     grid-area: 1/1/2/2;
@@ -44,6 +54,17 @@ html {
     grid-area: 1/3/2/4;
     width: 100%;
     height: 100%;
+    justify-items: center;
+    display: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 7fr;
+  }
+  html .set .history .hist-title {
+    height: min-content;
+  }
+  html .set .history button {
+    height: 20%;
+    width: 50%;
   }
 }
 /* finish media setting for 1024px plus */
@@ -58,11 +79,20 @@ html {
 }
 .set p {
   font-size: larger;
-  font-weight: bold;
+  font-weight: 900;
 }
 
-.set button {
+.main button {
   background-color: rgba(128, 128, 128, 0.661);
+}
+
+.scientific button {
+  background-color: rgba(128, 128, 128, 0.661);
+}
+
+.history button {
+  height: 100%;
+  width: 20%;
 }
 
 button:hover {
@@ -116,6 +146,8 @@ button:active {
 #output {
   text-align: center;
   overflow-wrap: break-word;
+  font-size: large;
+  font-weight: bold;
 }
 
 /* scientific part */
@@ -145,12 +177,11 @@ button:active {
 .history {
   display: none;
   grid-template-columns: 1fr;
-  grid-template-rows: 25% 75%;
+  grid-template-rows: 3fr 7fr;
   background-color: rgba(255, 192, 203, 0.767);
   border: 1px solid black;
 }
 .history .hist-title {
-  align-self: center;
   justify-self: center;
 }
 .history .history-display {

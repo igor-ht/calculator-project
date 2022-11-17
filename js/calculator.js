@@ -4,19 +4,19 @@ window.mathOperation = undefined;
 
 // reset button
 function resetButton() {
-  const x = document.getElementById("output");
-  x.innerHTML = "<p></p>"
-  window.firstNumber = undefined;
-  window.secondNumber = undefined;
-  window.mathOperation = undefined;
+  let x = document.getElementById("output");
+  x.innerHTML = ''
+  firstNumber = undefined;
+  secondNumber = undefined;
+  mathOperation = undefined;
 }
 
 // numbers click
 function clickNumber (n) {
-  const x = document.getElementById("output");
+  let x = document.getElementById("output");
   if (n === '.'){
-    const str = x.textContent;
-    const check = str.includes(n);
+    let str = x.textContent;
+    let check = str.includes(n);
     if (str.length == 0) {
       return;
     } else {
@@ -29,49 +29,74 @@ function clickNumber (n) {
 }}
 
 // operator selection
-function operation (e) {
-  const x = document.getElementById("output");
-  globalThis.firstNumber = x.textContent;
-  globalThis.mathOperation = e;
-  x.innerHTML = '';
-}
-function checkOperator (e) {
-  if (window.mathOperation === undefined) {
-    return operation(e);
-  } if (window.secondNumber === undefined) {
-    mathOperation = e;
+function clickOperator (e) {
+  let output = document.getElementById('output');
+  if (output.textContent.length > 0) {
+    if (firstNumber === undefined) {
+      firstNumber = output.textContent;
+      output.innerHTML = '';
+      mathOperation = e;
+      return;
+    } else {
+      if (secondNumber === undefined) {
+        secondNumber = output.textContent;
+        output.innerHTML = '';
+        return result(e);
+      } else {
+        mathOperation = e;
+        return;
+      }
+    }
   } else {
-    result();
-    const x = document.getElementById('output');
-    x.innerHTML = '';
     mathOperation = e;
+    return;
   }
 }
 
 // operation result
-function result () {
-  const x = document.getElementById("output");
-  globalThis.secondNumber = x.textContent;
-  if (secondNumber.length === 0) {
-    x.innerHTML = firstNumber;
-  } else {
-    const res = mathOperation(firstNumber, secondNumber);
-    mathOperation = undefined;
-    secondNumber = undefined;
-    x.innerHTML = res;
-}}
-// add operation to hist log
-function histLog(res) {
-  const hist = document.getElementById("histLog");
-  hist.innerHTML += firstNumber + mathOperation + '<br>';
+function result (e) {
+  let ans = mathOperation(firstNumber, secondNumber);
+  firstNumber = ans;
+  secondNumber = undefined;
+  mathOperation = e;
 }
+function equal() {
+  let output = document.getElementById('output');
+  let num = output.textContent
+  if (firstNumber !== undefined){
+    if (secondNumber === undefined) {
+      if (num !== '') {
+        secondNumber = num;
+        let ans = mathOperation(firstNumber, secondNumber);
+        firstNumber = ans;
+        let output = document.getElementById('output');
+        output.innerHTML = firstNumber;
+        firstNumber = undefined;
+        secondNumber = undefined;
+        mathOperation = undefined;
+      } else {
+        output.innerHTML = firstNumber;
+        firstNumber = undefined;
+      }
+    } else {
+      output.innerHTML = firstNumber;
+    }
+  }
+}
+
 
 // BackSpace click
 function backSpace (){
   let x = document.getElementById("output");
   let paragraph = x.textContent;
-  paragraph = paragraph.slice(0, -1);
-  x.innerHTML = paragraph;
+  if (paragraph !== '') {
+    paragraph = paragraph.slice(0, -1);
+    x.innerHTML = paragraph;
+  } else {
+    if (mathOperation !== undefined) {
+      mathOperation = undefined;
+    }
+  }
 }
 
 // addition function
@@ -104,6 +129,8 @@ function div (x,y) {
   hist.innerHTML += x + ' / ' + y + ' = ' + res + '<br>';
   return res
 }
+
+//scientific calculator functions:
 // mod function
 function mod () {
   const x = document.getElementById('output');
@@ -114,28 +141,31 @@ function mod () {
   hist.innerHTML += p + ' mod 2 = ' + res + '<br>';
   return res
 }
+//square power
+function sqrPower() {
+  let output = document.getElementById('output');
+  let paragraph = output.textContent;
+  if (paragraph !== '') {
+    let ans = Number(paragraph) ** 2;
+    output.innerHTML = ans;
+    const hist = document.getElementById('histLog');
+    hist.innerHTML += paragraph + '&#178 = ' + ans + '<br>';
+  }
+}
+//square root
+function sqrRoot() {
+  let output = document.getElementById('output');
+  let paragraph = output.textContent;
+  if (paragraph !== '') {
+    let ans = Number(paragraph) ** 0.5;
+    output.innerHTML = ans;
+    const hist = document.getElementById('histLog');
+    hist.innerHTML += '&#178&#8730 ' + paragraph + ' = ' + ans + '<br>';
+  }
+}
 
 
 // event and listeners
-// variables
-const zero = document.querySelectorAll('#zero');
-const one = document.querySelectorAll('#one');
-const two = document.querySelectorAll('#two');
-const three = document.querySelectorAll('#three');
-const four = document.querySelectorAll('#four');
-const five = document.querySelectorAll('#five');
-const six = document.querySelectorAll('#six');
-const seven = document.querySelectorAll('#seven');
-const eight = document.querySelectorAll('#eight');
-const nine = document.querySelectorAll('#nine');
-// adding listeners
-zero[0].addEventListener("click", console.log(0));
-one[0].addEventListener('click', console.log(1));
-two[0].addEventListener('click', console.log(2));
-three[0].addEventListener('click', console.log(3));
-four[0].addEventListener('click', console.log(4));
-five[0].addEventListener('click', console.log(5));
-six[0].addEventListener('click', console.log(6));
-seven[0].addEventListener('click', console.log(7));
-eight[0].addEventListener('click', console.log(8));
-nine[0].addEventListener('click', console.log(9));
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('page loaded');
+})
