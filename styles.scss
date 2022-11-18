@@ -32,7 +32,7 @@ html{
     #output{
       text-align: center;
       overflow-wrap: break-word;
-      font-size: x-large;
+      font-size: xx-large;
       font-weight: bold;
     }
     .scientific{
@@ -116,9 +116,6 @@ button:active{
 
 
 /* main grid-cell*/
-body *{
-  
-}
 .main{
   grid-area: 1/1/2/2;
   display: grid;
@@ -160,11 +157,12 @@ body *{
   color: white;
   font-weight: bold;
   border: 1px solid white;
+  overflow: auto;
 }
 #output{
   text-align: center;
   overflow-wrap: break-word;
-  font-size: large;
+  font-size: x-large;
   font-weight: bold;
 }
 
@@ -217,5 +215,42 @@ body *{
   }
   button{
     display: none;
+  }
+}
+
+
+// light mode styling (class for html element)
+.lightMode {  
+  background-color: white;
+
+  body {
+    background-color: white;
+  }
+
+  .main{
+    background-color: rgb(244, 92, 92);
+
+    .numbers button{
+      background-color: rgba(251, 72, 72, 0.901);
+    }
+    .right-buttons{
+      background-color: rgb(158, 68, 158);
+    }
+    .left-buttons{
+      background-color: rgb(158, 68, 158);
+    }
+  }
+  .scientific{
+    background-color: rgba(126, 126, 237, 0.794);
+    
+    button{
+      background-color: rgba(56, 180, 221, 0.798);
+    }
+  }
+  .history{
+    background-color: rgba(126, 126, 237, 0.794);
+  }
+  #histLog{
+    color: white;
   }
 }
