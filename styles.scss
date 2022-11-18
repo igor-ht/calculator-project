@@ -60,7 +60,12 @@ html{
       justify-items: center;
       display: none;
       grid-template-columns: 1fr;
-      grid-template-rows: 3fr 7fr;
+      grid-template-rows: 10% auto;
+      overflow: hidden;
+
+      .history-display{
+        overflow: auto;
+      }
 
       .hist-title{
         height: min-content;
@@ -91,11 +96,14 @@ html{
 }
 .main button{
   background-color: rgba(128, 128, 128, 0.661);
+  border: 1px solid white;
 }
 .scientific button{
   background-color: rgba(128, 128, 128, 0.661);
+  border: 1px solid white;
 }
 .history button{
+  display: none;
   height: 100%;
   width: 20%;
 }
@@ -108,30 +116,39 @@ button:active{
 
 
 /* main grid-cell*/
+body *{
+  
+}
 .main{
   grid-area: 1/1/2/2;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
   background-color: rgba(127, 255, 212, 0.619);
+  border: 1px solid white;
 }
 .left-buttons{
   grid-area: 1/1/-1/2;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 1fr);
+  background-color: greenyellow;
+  border: 1px solid white;
 }
 .right-buttons{
   grid-area: 1/-2/-1/-1;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 1fr);
+  background-color: greenyellow;
+  border: 1px solid white;
 }
 .numbers{
   grid-area: 2/2/-1/-2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  border: 1px solid white;
 
   .reset{
     grid-area: -2/1/-1/-1;
@@ -139,9 +156,10 @@ button:active{
 }
 .screenDisplay{
   grid-area: 1/2/2/5;
-  background-color: yellow;
+  background-color: black;
+  color: white;
   font-weight: bold;
-  border: 1px solid black;
+  border: 1px solid white;
 }
 #output{
   text-align: center;
@@ -156,8 +174,8 @@ button:active{
   display: none;
   grid-template-columns: 1fr;
   grid-template-rows: 20% auto;
-  background-color: rgba(228, 109, 109, 0.844);
-  border: 1px solid black;
+  background-color: rgb(191 241 179 / 75%);
+  border: 1px solid white;
 
   .sci-title{
     grid-area: 1/1/2/2;
@@ -169,6 +187,7 @@ button:active{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
+    background-color: darkgreen;
   }
   .base2{
     grid-area: 1/4/3/5;
@@ -179,17 +198,24 @@ button:active{
 .history{
   display: none;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr 7fr;
-  background-color: rgba(255, 192, 203, 0.767);
-  border: 1px solid black;
+  grid-template-rows: 1r auto;
+  background-color: rgb(191 241 179 / 75%);
+  border: 1px solid white;
 
   .hist-title{
+    grid-area: 1/1/2/2;
     justify-self: center;
+    align-self: center;
+    height: fit-content;
   }
   .history-display{
+    grid-area: 2/1/3/2;
     overflow:auto;
   }
   .history-display p{
     text-align: center;
+  }
+  button{
+    display: none;
   }
 }

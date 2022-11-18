@@ -35,12 +35,12 @@ function basicMode() {
 // light/dark mode feature for screen display
 function lightMode() {
   const x = document.getElementById("screenDisplay");
-  if (x.style.backgroundColor !== 'black') { 
-    x.style.backgroundColor = 'black';
-    x.style.color = 'white';
-  } else {
+  if (x.style.backgroundColor !== 'yellow') { 
     x.style.backgroundColor = 'yellow';
     x.style.color = 'black';
+  } else {
+    x.style.backgroundColor = 'black';
+    x.style.color = 'white';
   }
 }
 

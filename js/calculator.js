@@ -4,61 +4,64 @@ window.mathOperation = undefined;
 
 // reset button
 function resetButton() {
-  let x = document.getElementById("output");
-  x.innerHTML = ''
+  let output = document.getElementById("output");
+  output.innerHTML = ''
   firstNumber = undefined;
   secondNumber = undefined;
   mathOperation = undefined;
 }
 
 // numbers click
-function clickNumber (n) {
-  let x = document.getElementById("output");
-  if (n === '.'){
-    let str = x.textContent;
-    let check = str.includes(n);
-    if (str.length == 0) {
+function clickNumber (input) {
+  let output = document.getElementById("output");
+  if (input === '.'){
+    let screenDisplay = output.textContent;
+    let check = screenDisplay.includes(input);
+    if (screenDisplay.length == 0 || screenDisplay === '-') {
       return;
     } else {
     if (check === false) {
-      x.innerHTML += n;
+      output.innerHTML += input;
       return;
     } else { return }
   }} else {
-  x.innerHTML += n;
+  output.innerHTML += input;
 }}
 
 // operator selection
-function clickOperator (e) {
+function clickOperator (operator) {
   let output = document.getElementById('output');
+  if (output.textContent === '-' || output.textContent === '') {
+    return;
+  }
   if (output.textContent.length > 0) {
     if (firstNumber === undefined) {
       firstNumber = output.textContent;
       output.innerHTML = '';
-      mathOperation = e;
+      mathOperation = operator;
       return;
     } else {
       if (secondNumber === undefined) {
         secondNumber = output.textContent;
         output.innerHTML = '';
-        return result(e);
+        return result(operator);
       } else {
-        mathOperation = e;
+        mathOperation = operator;
         return;
       }
     }
   } else {
-    mathOperation = e;
+    mathOperation = operator;
     return;
   }
 }
 
 // operation result
-function result (e) {
+function result (operator) {
   let ans = mathOperation(firstNumber, secondNumber);
   firstNumber = ans;
   secondNumber = undefined;
-  mathOperation = e;
+  mathOperation = operator;
 }
 function equal() {
   let output = document.getElementById('output');
@@ -87,11 +90,11 @@ function equal() {
 
 // BackSpace click
 function backSpace (){
-  let x = document.getElementById("output");
-  let paragraph = x.textContent;
-  if (paragraph !== '') {
-    paragraph = paragraph.slice(0, -1);
-    x.innerHTML = paragraph;
+  let output = document.getElementById("output");
+  let content = output.textContent;
+  if (content !== '') {
+    content = content.slice(0, -1);
+    output.innerHTML = content;
   } else {
     if (mathOperation !== undefined) {
       mathOperation = undefined;
@@ -124,10 +127,32 @@ function mult (x,y) {
 }
 // division function
 function div (x,y) {
-  const res = x / y;
-  const hist = document.getElementById('histLog');
-  hist.innerHTML += x + ' / ' + y + ' = ' + res + '<br>';
-  return res
+  if (y == 0) {
+    const res = 0;
+    const hist = document.getElementById('histLog');
+    hist.innerHTML += x + ' / ' + y + ' = ' + res + '<br>';
+    return res;
+  } else {
+    const res = x / y;
+    const hist = document.getElementById('histLog');
+    hist.innerHTML += x + ' / ' + y + ' = ' + res + '<br>';
+    return res;
+  }
+}
+// positive/negative
+function plusMinus() {
+  const output = document.getElementById('output');
+  let num = output.textContent;
+  if (num === '') {
+    output.innerHTML = '-';
+  } else {
+    if (num === '-') {
+      output.innerHTML = ''
+    } else {
+    num = num * -1;
+    output.innerHTML = num;
+    }
+  }
 }
 
 //scientific calculator functions:
