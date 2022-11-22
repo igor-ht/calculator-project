@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "allowJs": true,
+    "lib": [
+      "DOM",
+      "ES2021"
+    ],
+    "watch": true,
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": ".ts/js"
+  },
+  "files": [
+    "ts/application.ts",
+    "ts/calculator.ts"
+  ],
+  "include": [
+    "ts"
+  ]
+}

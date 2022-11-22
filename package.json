@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "sass styles.scss styles.css",
-    "dev": "sass styles.scss styles.css --watch",
+    "build": "sass style/styles.scss style/styles.css",
+    "dev": "sass style/styles.scss style/styles.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/igor-ht/calculator-project#readme",
   "devDependencies": {
     "http-server": "^14.1.1",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "typescript": "^4.9.3"
   }
 }

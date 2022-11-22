@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyCalculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style/styles.css">
   </head>
 
   <body class="set">
 
     <!-- main part of calculator -->
     <div class="main">
-
+      <div id="infoPopUp" class="infoPopUp">
+        <p>Developer name: Igor Hamburger<br>Calculator Version: 1.0<br>Digital calculator with all basics functions and scientific calculator.</p>
+      </div>
       <!-- output display -->
       <div class="screenDisplay" id="screenDisplay">
         <p id="output"></p>
@@ -61,10 +63,10 @@
       <div class="sci-features">
         <button type="button" id="xPower" onclick="sqrPower()" class=""><p>x&#178</p></button>
         <button type="button" id="sqrRoot" onclick="sqrRoot()" class=""><p>&#178&#8730x</p></button>
-        <button type="button" id="mod" onclick="mod()" class=""><p>mod</p></button>
-        <button type="button" id="xPowerY" class=""><p>xʸ</p></button>
-        <button type="button" id="yRootX" class=""><p>&#696&#8730x</p></button>
-        <button type="button" id="pi" class=""><p>&#960</p></button>
+        <button type="button" id="mod" onclick="clickOperator(mod)" class=""><p>mod</p></button>
+        <button type="button" id="xPowerY" onclick="clickOperator(xPowerY)" class=""><p>xʸ</p></button>
+        <button type="button" id="yRootX" onclick="clickOperator(yRootX)" class=""><p>&#696&#8730x</p></button>
+        <button type="button" id="pi" onclick="pi()" class=""><p>&#960</p></button>
         <button type="button" id="baseTwo" class="base2"><p>Base&#8322</p></button>
       </div>
 
@@ -72,15 +74,14 @@
     <!-- history log part -->
     <div class="history" id="hist">
       <div class="hist-title">
-        <button type="button" class="resetHistLog" onclick="resetHist">Refresh</button>
-        <p>&#128366 Operations log</p>
+        <button type="button" id="refresh" onclick="refresh()">Refresh</button><p>&#128366 Operations log</p>
       </div>
       <div class="history-display">
         <p id="histLog"></p>
       </div>
     </div>
-    <script src="./js/application.js"></script>
-    <script src="./js/calculator.js"></script>
+    <script src="./ts/js/application.js"></script>
+    <script src="./ts/js/calculator.js"></script>
   </body>
 
 </html>
