@@ -2,23 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html{
+      background-color: black;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body{
+      height: 100%;
+      width: 100%;
+      background-color: black;
+      align-items: center;
+    }
+
+    form{
+      border-style: dashed;
+      color: black;
+      background-color: white;
+      height: 50%;
+      width: 50%;
+      font-size: x-large;
+      margin: 10% 10%;
+    }
+
+
+  </style>
   <title>Form</title>
 </head>
 <body>
-  <form>
+  <form action="./index.html">
     <label for="backgroundColor">Choose your background color:</label>
-    <select name="backgroundColor" id="backgroundColor">
-      <option value="Blue">Blue</option>
-      <option value="Red">Red</option>
-      <option value="Yellow">Yellow</option>
-      <option value="Pink">Pink</option>
-      <option value="Green">Green</option>
+    <select name="bg-color" id="backgroundColor">
+      <option value="">-- Choose an option --</option>
+      <option value="blue">Blue</option>
+      <option value="red">Red</option>
+      <option value="yellow">Yellow</option>
+      <option value="pink">Pink</option>
+      <option value="green">Green</option>
     </select>
     <br>
     <label for="fontStyle">Choose your font:</label>
-    <select name="fontStyle" id="fontStyle">
+    <select name="font-style" id="fontStyle">
+      <option value="">-- Choose an option --</option>
       <option value="courier">Courier New</option>
       <option value="timesNewRoman">Times New Roman</option>
       <option value="georgia">Georgia</option>
@@ -27,9 +55,11 @@
     </select>
     <br>
     <label for="darkMode">Dark Mode</label>
-    <input type="radio" name="Mode" id="darkMode" value="darkMode" required>
+    <input type="radio" name="mode" id="darkMode" value="">
     <label for="lightMode">Light Mode</label>
-    <input type="radio" name="Mode" id="lightMode" value="lightMode" required>
+    <input type="radio" name="mode" id="lightMode" value="lightMode">
+    <input type="submit" placeholder="Submit" id="submit">
   </form>
+
 </body>
 </html>

@@ -2,6 +2,13 @@ html {
   height: 100%;
   background-color: black;
 }
+html a {
+  text-decoration: none;
+}
+html a:visited {
+  text-decoration: none;
+  color: black;
+}
 
 /* setting for screen size bigger than 1024px */
 @media only screen and (min-width: 1024px) {

@@ -1,11 +1,13 @@
-const sciMode = document.getElementById('sciButton');
-sciMode.addEventListener('click', () => {
+document.addEventListener('DOMContentLoaded', () => {
+    const path = window.location.search;
+    if (path) {
+        const config = new URLSearchParams(path);
+        const classSet = document.getElementById('html');
+        classSet.style.backgroundColor = config.get("bg-color");
+        classSet.style.fontFamily = config.get('font-style');
+        classSet.classList.add(config.get('mode'));
+    }
 });
-function activeSciMode() {
-}
-// settings buttons
-function settings() {
-}
 // info button
 function infoLog() {
     const p = document.getElementById('infoPopUp');
