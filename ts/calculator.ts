@@ -11,6 +11,7 @@ function resetButton() {
   globalThis.mathOperation = undefined;
 }
 
+
 // numbers click
 function clickNumber(input) {
   let output = document.getElementById("output");
