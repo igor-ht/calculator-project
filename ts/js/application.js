@@ -1,8 +1,11 @@
+const sciMode = document.getElementById('sciButton');
+sciMode.addEventListener('click', () => {
+});
+function activeSciMode() {
+}
 // settings buttons
 function settings() {
-    
 }
-
 // info button
 function infoLog() {
     const p = document.getElementById('infoPopUp');
@@ -12,7 +15,8 @@ function infoLog() {
         p.style.display = 'none';
         screen.style.display = 'block';
         button.style.opacity = '1.0';
-    } else {
+    }
+    else {
         p.style.display = 'block';
         screen.style.display = 'none';
         button.style.opacity = '0.5';
@@ -32,11 +36,10 @@ function openHist() {
     }
 }
 // refresh histLog
-function refresh () {
+function refresh() {
     const histlog = document.getElementById('histLog');
     histlog.innerHTML = '';
 }
-
 // open/close scientific calculator
 function openSci() {
     const x = document.getElementById("sci");
@@ -50,7 +53,6 @@ function openSci() {
         sciButton.style.opacity = '0.5';
     }
 }
-
 //  default basic mode
 function basicMode() {
     const x = document.getElementById("sci");
@@ -62,7 +64,6 @@ function basicMode() {
     const histButton = document.getElementById('histButton');
     histButton.style.opacity = '1.0';
 }
-
 // light/dark mode feature for screen display
 function lightMode() {
     const x = document.getElementById("screenDisplay");

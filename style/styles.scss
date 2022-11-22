@@ -34,11 +34,12 @@ html{
         display: none;
         background-color: black;
         overflow: hidden;
-        
+      
         p{
           text-align: center;
           font-size:large;
           color: white;
+          margin: 2%;
         }
       }
     }
@@ -126,7 +127,7 @@ html{
   background-color: rgba(126, 155, 77, 0.637);
   box-shadow: 1px 1px 10px white;
 }
-button:hover{
+.set button:hover{
   opacity: 0.5;
 }
 button:active{
@@ -175,13 +176,14 @@ button:active{
   display: none;
   background-color: black;
   overflow: hidden;
+  border: 1px solid white;
   p{
     text-align: center;
     font-size: x-small;
     color: white;
-    margin: 0.5%;
   }
 }
+
 .screenDisplay{
   display: block;
   grid-area: 1/2/2/5;
@@ -203,7 +205,7 @@ button:active{
 .scientific{
   display: none;
   grid-template-columns: 1fr;
-  grid-template-rows: 20% auto;
+  grid-template-rows: 10% 90%;
   background-color: rgb(191 241 179 / 75%);
   border: 1px solid white;
 
@@ -218,6 +220,7 @@ button:active{
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     background-color: darkgreen;
+    height: auto;
   }
   .base2{
     grid-area: 1/4/3/5;
