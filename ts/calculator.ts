@@ -5,21 +5,9 @@ let oppArray: any[] = [];
 let allNum: String[] = []
 let mode: string = 'basic';
 
-const sciMode = document.getElementById('sciButton');
-sciMode.addEventListener('click', () => {
-  if (mode === 'basic') {
-    mode = 'sci';
-  } else {
-    mode = 'basic';
-  }
-});
-
-const basic = document.getElementById('basicButton');
-basic.addEventListener('click', () => {
-  mode = 'basic';
-});
-
 // reset button
+const reset = document.getElementById('resetButton');
+reset.addEventListener('click', () => resetButton());
 function resetButton() {
   let output: HTMLElement = document.getElementById("output");
   output.innerHTML = "";
@@ -32,7 +20,11 @@ function resetButton() {
 
 
 // numbers click
-function clickNumber(input) {
+const allDigits: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.digits');
+allDigits.forEach(element => { 
+  element.addEventListener('click', () => clickNumber(element.value));
+});
+function clickNumber(input: string) {
   let output = document.getElementById("output");
   if (input === ".") {
     let screenDisplay = output.textContent;
@@ -104,6 +96,8 @@ function result(operator: Function) {
   mathOperation = operator;
 }
 
+const getResult = document.getElementById('equalButton');
+getResult.addEventListener('click', () => equal());
 function equal() {
   let output: HTMLElement = document.getElementById("output");
   let num: Number | String = output.textContent;
@@ -158,6 +152,8 @@ function equal() {
 }
 
 // BackSpace click
+const erase = document.getElementById('eraseButton');
+erase.addEventListener('click', () => backSpace());
 function backSpace() {
   let output = document.getElementById("output");
   let content = output.textContent;
@@ -224,6 +220,8 @@ function div(x: Number, y: Number) {
   }
 }
 // positive/negative
+const plusOrMinus = document.getElementById('plusMinus');
+plusOrMinus.addEventListener('click', () => plusMinus());
 function plusMinus() {
   const output: HTMLElement = document.getElementById("output");
   let num: String | Number = output.textContent;
@@ -250,6 +248,8 @@ function mod(x: Number, y: Number) {
   return res;
 }
 //square power
+const sqrPwr = document.getElementById('xPower');
+sqrPwr.addEventListener('click', () => sqrPower())
 function sqrPower() {
   let output: HTMLElement = document.getElementById("output");
   let paragraph: String = output.textContent;
@@ -261,6 +261,8 @@ function sqrPower() {
   }
 }
 //square root
+const sqrRt = document.getElementById('sqrRoot');
+sqrRt.addEventListener('click', () => sqrRoot());
 function sqrRoot() {
   let output: HTMLElement = document.getElementById("output");
   let paragraph: String = output.textContent;
@@ -286,9 +288,16 @@ function yRootX (x: Number, y: Number) {
     return res;
 }
 // PI
+const Pi = document.getElementById('pi');
+Pi.addEventListener('click', () => pi());
 function pi() {
   const x: HTMLElement = document.getElementById("output");
-  x.innerHTML = '3.141592653589793';
+  if (x.textContent === '') {
+    x.innerHTML = '3.141592653589793';
+  } else {
+    x.innerHTML = String(Number(x.textContent) * 3.1415926535897);
+  }
+  
 }
 
 // event and listeners

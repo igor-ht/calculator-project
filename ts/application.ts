@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
   
-
-
-// info button
+// info display
+const info = document.getElementById('infoButton');
+info.addEventListener('click', () => infoLog())
 function infoLog() {
     const p: HTMLElement = document.getElementById('infoPopUp');
     const screen: HTMLElement = document.getElementById('screenDisplay');
@@ -27,52 +27,63 @@ function infoLog() {
         button.style.opacity = '0.5';
     }
 }
+
 // open/close history log
+const hist = document.getElementById('histButton');
+hist.addEventListener('click', () => openHist());
 function openHist() {
     const x: HTMLElement = document.getElementById("hist");
     const histButton: HTMLElement = document.getElementById('histButton');
     if (x.style.display === "grid") {
         x.style.display = "none";
-        histButton.style.opacity = '1.0';
+        histButton.style.backgroundColor = 'rgba(128, 128, 128, 0.661)';
     }
     else {
         x.style.display = "grid";
-        histButton.style.opacity = '0.5';
+        histButton.style.backgroundColor = 'darkgreen';
     }
 }
 // refresh histLog
+const refreshHistLog = document.getElementById('refresh');
+refreshHistLog.addEventListener('click', () => refresh());
 function refresh () {
     const histlog: HTMLElement = document.getElementById('histLog');
     histlog.innerHTML = '';
 }
 
 // open/close scientific calculator
+const sci = document.getElementById('sciButton');
+sci.addEventListener('click', () => openSci());
 function openSci() {
     const x: HTMLElement = document.getElementById("sci");
     const sciButton: HTMLElement = document.getElementById('sciButton');
     if (x.style.display === "grid") {
+        mode = 'basic';
         x.style.display = "none";
-        sciButton.style.opacity = '1.0';
+        sciButton.style.backgroundColor = 'rgba(128, 128, 128, 0.661)';
     }
     else {
+        mode = 'sci';
         x.style.display = "grid";
-        sciButton.style.opacity = '0.5';
+        sciButton.style.backgroundColor = 'darkgreen';
     }
 }
 
-//  default basic mode
+//default basic mode
+const basicButton = document.getElementById('basicButton');
+basicButton.addEventListener('click', () => basicMode());
 function basicMode() {
-    const x: HTMLElement = document.getElementById("sci");
-    const y: HTMLElement = document.getElementById("hist");
-    x.style.display = "none";
-    y.style.display = "none";
-    const sciButton: HTMLElement = document.getElementById('sciButton');
-    sciButton.style.opacity = '1.0';
-    const histButton: HTMLElement = document.getElementById('histButton');
-    histButton.style.opacity = '1.0';
+    const sci = document.getElementById('sci');
+    const hist = document.getElementById('hist');
+    sci.style.display = 'grid';
+    hist.style.display = 'grid';
+    openSci();
+    openHist();
 }
 
 // light/dark mode feature for screen display
+const lightButton = document.getElementById('lightButton');
+lightButton.addEventListener('click', () => lightMode());
 function lightMode() {
     const x: HTMLElement = document.getElementById("screenDisplay");
     const b: HTMLElement = document.getElementById("lightButton");

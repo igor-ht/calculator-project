@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
         classSet.classList.add(config.get('mode'));
     }
 });
-// info button
+// info display
+const info = document.getElementById('infoButton');
+info.addEventListener('click', () => infoLog());
 function infoLog() {
     const p = document.getElementById('infoPopUp');
     const screen = document.getElementById('screenDisplay');
@@ -26,48 +28,58 @@ function infoLog() {
     }
 }
 // open/close history log
+const hist = document.getElementById('histButton');
+hist.addEventListener('click', () => openHist());
 function openHist() {
     const x = document.getElementById("hist");
     const histButton = document.getElementById('histButton');
     if (x.style.display === "grid") {
         x.style.display = "none";
-        histButton.style.opacity = '1.0';
+        histButton.style.backgroundColor = 'rgba(128, 128, 128, 0.661)';
     }
     else {
         x.style.display = "grid";
-        histButton.style.opacity = '0.5';
+        histButton.style.backgroundColor = 'darkgreen';
     }
 }
 // refresh histLog
+const refreshHistLog = document.getElementById('refresh');
+refreshHistLog.addEventListener('click', () => refresh());
 function refresh() {
     const histlog = document.getElementById('histLog');
     histlog.innerHTML = '';
 }
 // open/close scientific calculator
+const sci = document.getElementById('sciButton');
+sci.addEventListener('click', () => openSci());
 function openSci() {
     const x = document.getElementById("sci");
     const sciButton = document.getElementById('sciButton');
     if (x.style.display === "grid") {
+        mode = 'basic';
         x.style.display = "none";
-        sciButton.style.opacity = '1.0';
+        sciButton.style.backgroundColor = 'rgba(128, 128, 128, 0.661)';
     }
     else {
+        mode = 'sci';
         x.style.display = "grid";
-        sciButton.style.opacity = '0.5';
+        sciButton.style.backgroundColor = 'darkgreen';
     }
 }
-//  default basic mode
+//default basic mode
+const basicButton = document.getElementById('basicButton');
+basicButton.addEventListener('click', () => basicMode());
 function basicMode() {
-    const x = document.getElementById("sci");
-    const y = document.getElementById("hist");
-    x.style.display = "none";
-    y.style.display = "none";
-    const sciButton = document.getElementById('sciButton');
-    sciButton.style.opacity = '1.0';
-    const histButton = document.getElementById('histButton');
-    histButton.style.opacity = '1.0';
+    const sci = document.getElementById('sci');
+    const hist = document.getElementById('hist');
+    sci.style.display = 'grid';
+    hist.style.display = 'grid';
+    openSci();
+    openHist();
 }
 // light/dark mode feature for screen display
+const lightButton = document.getElementById('lightButton');
+lightButton.addEventListener('click', () => lightMode());
 function lightMode() {
     const x = document.getElementById("screenDisplay");
     const b = document.getElementById("lightButton");

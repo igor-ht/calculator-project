@@ -4,20 +4,9 @@ let mathOperation = undefined;
 let oppArray = [];
 let allNum = [];
 let mode = 'basic';
-const sciMode = document.getElementById('sciButton');
-sciMode.addEventListener('click', () => {
-    if (mode === 'basic') {
-        mode = 'sci';
-    }
-    else {
-        mode = 'basic';
-    }
-});
-const basic = document.getElementById('basicButton');
-basic.addEventListener('click', () => {
-    mode = 'basic';
-});
 // reset button
+const reset = document.getElementById('resetButton');
+reset.addEventListener('click', () => resetButton());
 function resetButton() {
     let output = document.getElementById("output");
     output.innerHTML = "";
@@ -28,6 +17,10 @@ function resetButton() {
     allNum = [];
 }
 // numbers click
+const allDigits = document.querySelectorAll('.digits');
+allDigits.forEach(element => {
+    element.addEventListener('click', () => clickNumber(element.value));
+});
 function clickNumber(input) {
     let output = document.getElementById("output");
     if (input === ".") {
@@ -104,6 +97,8 @@ function result(operator) {
     secondNumber = undefined;
     mathOperation = operator;
 }
+const getResult = document.getElementById('equalButton');
+getResult.addEventListener('click', () => equal());
 function equal() {
     let output = document.getElementById("output");
     let num = output.textContent;
@@ -161,6 +156,8 @@ function equal() {
     }
 }
 // BackSpace click
+const erase = document.getElementById('eraseButton');
+erase.addEventListener('click', () => backSpace());
 function backSpace() {
     let output = document.getElementById("output");
     let content = output.textContent;
@@ -231,6 +228,8 @@ function div(x, y) {
     }
 }
 // positive/negative
+const plusOrMinus = document.getElementById('plusMinus');
+plusOrMinus.addEventListener('click', () => plusMinus());
 function plusMinus() {
     const output = document.getElementById("output");
     let num = output.textContent;
@@ -258,6 +257,8 @@ function mod(x, y) {
     return res;
 }
 //square power
+const sqrPwr = document.getElementById('xPower');
+sqrPwr.addEventListener('click', () => sqrPower());
 function sqrPower() {
     let output = document.getElementById("output");
     let paragraph = output.textContent;
@@ -269,6 +270,8 @@ function sqrPower() {
     }
 }
 //square root
+const sqrRt = document.getElementById('sqrRoot');
+sqrRt.addEventListener('click', () => sqrRoot());
 function sqrRoot() {
     let output = document.getElementById("output");
     let paragraph = output.textContent;
@@ -294,9 +297,16 @@ function yRootX(x, y) {
     return res;
 }
 // PI
+const Pi = document.getElementById('pi');
+Pi.addEventListener('click', () => pi());
 function pi() {
     const x = document.getElementById("output");
-    x.innerHTML = '3.141592653589793';
+    if (x.textContent === '') {
+        x.innerHTML = '3.141592653589793';
+    }
+    else {
+        x.innerHTML = String(Number(x.textContent) * 3.1415926535897);
+    }
 }
 // event and listeners
 document.addEventListener("DOMContentLoaded", () => {
