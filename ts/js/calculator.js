@@ -1,13 +1,31 @@
-globalThis.firstNumber = undefined;
-globalThis.secondNumber = undefined;
-globalThis.mathOperation = undefined;
+let firstNumber = undefined;
+let secondNumber = undefined;
+let mathOperation = undefined;
+let oppArray = [];
+let allNum = [];
+let mode = 'basic';
+const sciMode = document.getElementById('sciButton');
+sciMode.addEventListener('click', () => {
+    if (mode === 'basic') {
+        mode = 'sci';
+    }
+    else {
+        mode = 'basic';
+    }
+});
+const basic = document.getElementById('basicButton');
+basic.addEventListener('click', () => {
+    mode = 'basic';
+});
 // reset button
 function resetButton() {
     let output = document.getElementById("output");
     output.innerHTML = "";
-    globalThis.firstNumber = undefined;
-    globalThis.secondNumber = undefined;
-    globalThis.mathOperation = undefined;
+    firstNumber = undefined;
+    secondNumber = undefined;
+    mathOperation = undefined;
+    oppArray = [];
+    allNum = [];
 }
 // numbers click
 function clickNumber(input) {
@@ -36,64 +54,109 @@ function clickNumber(input) {
 function clickOperator(operator) {
     let output = document.getElementById("output");
     let p = output.textContent;
-    if (p === "-") {
-        if (p === "") {
-            globalThis.mathOperation = operator;
-        }
-    }
-    if (output.textContent.length > 0) {
-        if (globalThis.firstNumber === undefined) {
-            globalThis.firstNumber = output.textContent;
-            output.innerHTML = "";
-            globalThis.mathOperation = operator;
-            return;
-        }
-        else {
-            if (globalThis.secondNumber === undefined) {
-                globalThis.secondNumber = output.textContent;
-                output.innerHTML = "";
-                return result(operator);
+    let sci = document.getElementById('sci');
+    if (mode === 'basic') {
+        if (p === "-") {
+            if (p === "") {
+                mathOperation = operator;
             }
-            else {
-                globalThis.mathOperation = operator;
+        }
+        if (output.textContent.length > 0) {
+            if (firstNumber === undefined) {
+                firstNumber = output.textContent;
+                output.innerHTML = "";
+                mathOperation = operator;
                 return;
             }
+            else {
+                if (secondNumber === undefined) {
+                    secondNumber = output.textContent;
+                    output.innerHTML = "";
+                    return result(operator);
+                }
+                else {
+                    mathOperation = operator;
+                    return;
+                }
+            }
+        }
+        else {
+            mathOperation = operator;
+            return;
         }
     }
     else {
-        globalThis.mathOperation = operator;
-        return;
+        if (p.length < 1) {
+            oppArray.pop();
+            oppArray.push(operator);
+        }
+        else {
+            allNum.push(p);
+            oppArray.push(operator);
+            output.innerHTML = '';
+        }
     }
 }
 // operation result
 function result(operator) {
-    let ans = globalThis.mathOperation(globalThis.firstNumber, globalThis.secondNumber);
-    globalThis.firstNumber = ans;
-    globalThis.secondNumber = undefined;
-    globalThis.mathOperation = operator;
+    let ans = mathOperation(firstNumber, secondNumber);
+    firstNumber = ans;
+    secondNumber = undefined;
+    mathOperation = operator;
 }
 function equal() {
     let output = document.getElementById("output");
     let num = output.textContent;
-    if (globalThis.firstNumber !== undefined) {
-        if (globalThis.secondNumber === undefined) {
-            if (num !== "") {
-                globalThis.secondNumber = num;
-                let ans = globalThis.mathOperation(globalThis.firstNumber, globalThis.secondNumber);
-                globalThis.firstNumber = ans;
-                let output = document.getElementById("output");
-                output.innerHTML = globalThis.firstNumber;
-                globalThis.firstNumber = undefined;
-                globalThis.secondNumber = undefined;
-                globalThis.mathOperation = undefined;
+    if (mode === 'basic') {
+        if (firstNumber !== undefined) {
+            if (secondNumber === undefined) {
+                if (num !== "") {
+                    secondNumber = num;
+                    let ans = mathOperation(firstNumber, secondNumber);
+                    firstNumber = ans;
+                    let output = document.getElementById("output");
+                    output.innerHTML = firstNumber;
+                    firstNumber = undefined;
+                    secondNumber = undefined;
+                    mathOperation = undefined;
+                }
+                else {
+                    output.innerHTML = firstNumber;
+                    firstNumber = undefined;
+                }
             }
             else {
-                output.innerHTML = globalThis.firstNumber;
-                globalThis.firstNumber = undefined;
+                output.innerHTML = firstNumber;
             }
         }
-        else {
-            output.innerHTML = globalThis.firstNumber;
+    }
+    else {
+        if (num !== '-' && num !== '' && num !== '.' && num !== undefined) {
+            allNum.push(num);
+        }
+        if (oppArray.length > 0 && allNum.length > 1) {
+            let j = 0;
+            while (j < oppArray.length && allNum.length > 1) {
+                if (oppArray[j] === div || oppArray[j] === mult || oppArray[j] === yRootX || oppArray[j] === xPowerY) {
+                    let ans = String(oppArray[j](allNum[j], allNum[j + 1]));
+                    oppArray.splice(j, 1);
+                    allNum.splice(j, 2, ans);
+                    output.innerHTML = allNum[0];
+                }
+                else {
+                    j++;
+                }
+            }
+        }
+        if (oppArray.length > 0 && allNum.length > 1) {
+            let i = 0;
+            while (oppArray.length > i && allNum.length > 1) {
+                let ans = String(oppArray[i](allNum[i], allNum[i + 1]));
+                oppArray.shift();
+                allNum.splice(i, 2, ans);
+            }
+            output.innerHTML = allNum[0];
+            allNum = [];
         }
     }
 }
@@ -106,8 +169,13 @@ function backSpace() {
         output.innerHTML = content;
     }
     else {
-        if (globalThis.mathOperation !== undefined) {
-            globalThis.mathOperation = undefined;
+        if (mode === 'basic') {
+            if (mathOperation !== undefined) {
+                mathOperation = undefined;
+            }
+        }
+        else {
+            oppArray.pop();
         }
     }
 }

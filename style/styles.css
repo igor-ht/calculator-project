@@ -132,14 +132,6 @@ html a:visited {
   margin-bottom: 5px;
 }
 
-.set button:hover {
-  opacity: 0.5;
-}
-
-button:active {
-  opacity: 0.1;
-}
-
 /* main grid-cell*/
 .main {
   grid-area: 1/1/2/2;
@@ -209,6 +201,14 @@ button:active {
   font-weight: bold;
 }
 
+.main button:hover {
+  opacity: 0.5;
+}
+
+.main button:active {
+  opacity: 1;
+}
+
 /* scientific part */
 .scientific {
   display: none;
@@ -232,6 +232,14 @@ button:active {
 }
 .scientific .base2 {
   grid-area: 1/4/3/5;
+}
+
+.scientific button:hover {
+  opacity: 0.5;
+}
+
+.scientific button:active {
+  opacity: 1;
 }
 
 /* history part */
@@ -259,6 +267,14 @@ button:active {
 .history .history-display p {
   text-align: center;
   width: 100%;
+}
+
+.history button:hover {
+  opacity: 0.5;
+}
+
+.history button:active {
+  opacity: 1;
 }
 
 .lightMode {

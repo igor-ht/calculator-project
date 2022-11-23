@@ -1,3 +1,4 @@
+// event for design setting by user
 document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.search;
   if (path) {
