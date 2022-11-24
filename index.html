@@ -12,21 +12,26 @@
     <!-- main part of calculator -->
     <div class="main">
       <div id="infoPopUp" class="infoPopUp">
+        <button type="button" id="closePopUp"><strong>x</strong></button>
         <p>Developer name: Igor Hamburger<br>Calculator Version: 1.0<br>Digital calculator with all basics functions and scientific calculator.</p>
       </div>
       <!-- output display -->
       <div class="screenDisplay" id="screenDisplay">
         <p id="output"></p>
+        <form method="post" onsubmit="return false" class="formRemote" id="formRemote">
+          <input type="text" id="textInsert" name="expr" title="type your equation! only numbers and math symbols" required>
+          <input type="submit" placeholder="Submit" id="submitRemote">
+        </form>
       </div>
  
       <!-- left side buttons -->
       <div class="left-buttons">
-        <a href="config.html" target="_blank"><button type="button" id="settingButton" class="settings-button"><p>&#9881</p></button></a>
-        <button type="button" id="infoButton" class="info-button"><p>&#9432</p></button>        
-        <button type="button" id="lightButton" class="light-button"><p>&#128262</p></button>
-        <button type="button" id="histButton" class="hist-button"><p>&#128366</p></button>
-        <button type="button" id="sciButton" class="scientific-mode"><p>&#8319&#8730x</p></button>
-        <button type="button" id="basicButton" class="basic-mode"><p>&#9729</p></button>
+        <a href="config.html" target="_blank"><button type="button" id="settingButton" class="settings-button" title="Set your own calculator design"><p>&#9881</p></button></a>
+        <button type="button" id="infoButton" class="info-button" title="Informations"><p>&#9432</p></button>        
+        <button type="button" id="lightButton" class="light-button" title="ScreenDisplay light"><p>&#128262</p></button>
+        <button type="button" id="histButton" class="hist-button" title="Operations history"><p>&#128366</p></button>
+        <button type="button" id="sciButton" class="scientific-mode" title="Scientifc Calculator"><p>&#8319&#8730x</p></button>
+        <button type="button" id="remoteButton" class="basic-mode" title="Remote Mode"><p>&#9729</p></button>
       </div>
 
       <!-- right side buttons -->
@@ -39,7 +44,7 @@
         <button type="button" id="equalButton"><p>=</p></button>
       </div>
         
-      <!-- numbers display -->
+      <!-- digits buttons -->
       <div class="numbers">
         <button type="button" value="7" class="digits"><p>7</p></button>
         <button type="button" value="8" class="digits"><p>8</p></button>
@@ -56,6 +61,7 @@
         <button type="button" id="resetButton" class="reset"><p>C</p></button>
       </div>
     </div>
+
     <!-- scientific part -->
     <div class="scientific" id="sci">
       <p class="sci-title">&#8319&#8730x Scientific</p>
@@ -66,10 +72,10 @@
         <button type="button" id="xPowerY" onclick="clickOperator(xPowerY)"><p>xʸ</p></button>
         <button type="button" id="yRootX" onclick="clickOperator(yRootX)"><p>&#696&#8730x</p></button>
         <button type="button" id="pi"><p>&#960</p></button>
-        <button type="button" id="baseTwo" class="base2" disabled><p>Base&#8322</p></button>
+        <button type="button" id="baseTwo" class="base2"><p>Base&#8322</p></button>
       </div>
-
     </div>
+
     <!-- history log part -->
     <div class="history" id="hist">
       <div class="hist-title">
@@ -79,8 +85,8 @@
         <p id="histLog"></p>
       </div>
     </div>
+
     <script src="./ts/js/application.js"></script>
     <script src="./ts/js/calculator.js"></script>
   </body>
-
 </html>

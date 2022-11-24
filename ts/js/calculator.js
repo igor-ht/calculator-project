@@ -4,18 +4,6 @@ let mathOperation = undefined;
 let oppArray = [];
 let allNum = [];
 let mode = 'basic';
-// reset button
-const reset = document.getElementById('resetButton');
-reset.addEventListener('click', () => resetButton());
-function resetButton() {
-    let output = document.getElementById("output");
-    output.innerHTML = "";
-    firstNumber = undefined;
-    secondNumber = undefined;
-    mathOperation = undefined;
-    oppArray = [];
-    allNum = [];
-}
 // numbers click
 const allDigits = document.querySelectorAll('.digits');
 allDigits.forEach(element => {
@@ -97,6 +85,7 @@ function result(operator) {
     secondNumber = undefined;
     mathOperation = operator;
 }
+// operation result ('equal' button)
 const getResult = document.getElementById('equalButton');
 getResult.addEventListener('click', () => equal());
 function equal() {
@@ -155,7 +144,19 @@ function equal() {
         }
     }
 }
-// BackSpace click
+// reset button
+const reset = document.getElementById('resetButton');
+reset.addEventListener('click', () => resetButton());
+function resetButton() {
+    let output = document.getElementById("output");
+    output.innerHTML = "";
+    firstNumber = undefined;
+    secondNumber = undefined;
+    mathOperation = undefined;
+    oppArray = [];
+    allNum = [];
+}
+// BackSpace
 const erase = document.getElementById('eraseButton');
 erase.addEventListener('click', () => backSpace());
 function backSpace() {
@@ -261,12 +262,12 @@ const sqrPwr = document.getElementById('xPower');
 sqrPwr.addEventListener('click', () => sqrPower());
 function sqrPower() {
     let output = document.getElementById("output");
-    let paragraph = output.textContent;
-    if (paragraph !== "") {
-        let ans = Number(paragraph) ** 2;
+    let num = output.textContent;
+    if (num !== "") {
+        let ans = Math.pow(Number(num), 2);
         output.innerHTML = String(ans);
         const hist = document.getElementById("histLog");
-        hist.innerHTML += paragraph + "&#178 = " + ans + "<br>";
+        hist.innerHTML += num + "&#178 = " + ans + "<br>";
     }
 }
 //square root
@@ -274,40 +275,61 @@ const sqrRt = document.getElementById('sqrRoot');
 sqrRt.addEventListener('click', () => sqrRoot());
 function sqrRoot() {
     let output = document.getElementById("output");
-    let paragraph = output.textContent;
-    if (paragraph !== "") {
-        let ans = Number(paragraph) ** 0.5;
+    let num = output.textContent;
+    if (num !== "") {
+        let ans = Math.pow(Number(num), 0.5);
         output.innerHTML = String(ans);
         const hist = document.getElementById("histLog");
-        hist.innerHTML += "&#178&#8730 " + paragraph + " = " + ans + "<br>";
+        hist.innerHTML += "&#178&#8730 " + num + " = " + ans + "<br>";
     }
 }
 // x ^ y
 function xPowerY(x, y) {
-    const res = Number(x) ** Number(y);
+    const res = Math.pow(Number(x), Number(y));
     const hist = document.getElementById("histLog");
     hist.innerHTML += x + " ^ " + y + " = " + res + "<br>";
     return res;
 }
 // x ^ 1/y
 function yRootX(x, y) {
-    const res = Number(x) ** (1 / Number(y));
+    const res = Math.pow(Number(x), (1 / Number(y)));
     const hist = document.getElementById("histLog");
     hist.innerHTML += x + " ^ 1/" + y + " = " + res + "<br>";
     return res;
 }
-// PI
+// PI number
 const Pi = document.getElementById('pi');
 Pi.addEventListener('click', () => pi());
 function pi() {
     const x = document.getElementById("output");
-    if (x.textContent === '') {
-        x.innerHTML = '3.141592653589793';
+    x.innerHTML = String(Math.PI);
+    firstNumber = '';
+    secondNumber = '';
+    allNum = [];
+    oppArray = [];
+    mathOperation = undefined;
+}
+let toBinary = document.getElementById('baseTwo');
+toBinary.addEventListener('click', () => BinaryConverter());
+async function BinaryConverter() {
+    let output = document.getElementById('output');
+    let num = output.textContent;
+    num = String(Math.round(Number(num)));
+    let hist = document.getElementById('histLog');
+    if (num !== '' && num !== '-') {
+        try {
+            let url = 'https://networkcalc.com/api/binary/' + num + '?from=10&to=2';
+            let response = await fetch(url);
+            let stats = await response.json();
+            output.innerHTML = stats.converted;
+            hist.innerHTML += num + ' = ' + stats.converted + '<br>';
+        }
+        catch {
+            console.log('error');
+            hist.innerHTML = 'this function is currently offline';
+        }
     }
     else {
-        x.innerHTML = String(Number(x.textContent) * 3.1415926535897);
+        return;
     }
 }
-// event and listeners
-document.addEventListener("DOMContentLoaded", () => {
-});

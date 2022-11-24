@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 // info display
+const infoPopUpAlert = document.getElementById("closePopUp");
+infoPopUpAlert.addEventListener('click', () => infoLog());
 const info = document.getElementById('infoButton');
 info.addEventListener('click', () => infoLog());
 function infoLog() {
@@ -19,12 +21,12 @@ function infoLog() {
     if (p.style.display === 'block') {
         p.style.display = 'none';
         screen.style.display = 'block';
-        button.style.opacity = '1.0';
+        button.style.backgroundColor = 'rgba(128, 128, 128, 0.661)';
     }
     else {
         p.style.display = 'block';
         screen.style.display = 'none';
-        button.style.opacity = '0.5';
+        button.style.backgroundColor = 'yellowgreen';
     }
 }
 // open/close history log
@@ -39,7 +41,7 @@ function openHist() {
     }
     else {
         x.style.display = "grid";
-        histButton.style.backgroundColor = 'darkgreen';
+        histButton.style.backgroundColor = 'yellowgreen';
     }
 }
 // refresh histLog
@@ -63,19 +65,8 @@ function openSci() {
     else {
         mode = 'sci';
         x.style.display = "grid";
-        sciButton.style.backgroundColor = 'darkgreen';
+        sciButton.style.backgroundColor = 'yellowgreen';
     }
-}
-//default basic mode
-const basicButton = document.getElementById('basicButton');
-basicButton.addEventListener('click', () => basicMode());
-function basicMode() {
-    const sci = document.getElementById('sci');
-    const hist = document.getElementById('hist');
-    sci.style.display = 'grid';
-    hist.style.display = 'grid';
-    openSci();
-    openHist();
 }
 // light/dark mode feature for screen display
 const lightButton = document.getElementById('lightButton');
@@ -86,11 +77,53 @@ function lightMode() {
     if (x.style.backgroundColor !== "rgb(227, 227, 85)") {
         x.style.backgroundColor = "rgb(227, 227, 85)";
         x.style.color = "black";
-        b.style.opacity = "0.5";
+        b.style.backgroundColor = 'yellowgreen';
     }
     else {
-        b.style.opacity = "1.0";
+        b.style.backgroundColor = 'rgba(128, 128, 128, 0.661)';
         x.style.backgroundColor = "black";
         x.style.color = "white";
     }
+}
+// remote mode by api
+const remoteButton = document.getElementById('remoteButton');
+remoteButton.addEventListener('click', () => remoteMode());
+function remoteMode() {
+    const sci = document.getElementById('sci');
+    const hist = document.getElementById('hist');
+    activeRemote();
+}
+const formRemote = document.querySelector('form');
+formRemote.addEventListener('submit', () => getRemoteResult());
+function activeRemote() {
+    let input = document.getElementById('formRemote');
+    let screen = document.getElementById('output');
+    let button = document.getElementById('remoteButton');
+    if (input.style.display === 'block') {
+        input.style.display = 'none';
+        screen.style.display = 'block';
+        button.style.backgroundColor = 'rgba(128, 128, 128, 0.661)';
+    }
+    else {
+        input.style.display = 'block';
+        screen.style.display = 'none';
+        button.style.backgroundColor = 'yellowgreen';
+    }
+}
+async function getRemoteResult() {
+    let input = document.querySelector('form');
+    let expression = document.querySelector('input');
+    let expr = encodeURIComponent(expression.value);
+    let url = 'http://api.mathjs.org/v4/?expr=' + expr;
+    let response = await fetch(url);
+    let stats = await response.json();
+    let print = expression.value + ' = ' + stats;
+    expression.value = stats;
+    printInHistLog(print);
+}
+function printInHistLog(str) {
+    let histLog = document.getElementById('histLog');
+    let hist = document.getElementById('hist');
+    hist.style.display = 'grid';
+    histLog.innerHTML += str + '<br>';
 }
