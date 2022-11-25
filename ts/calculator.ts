@@ -11,6 +11,7 @@ allDigits.forEach(element => {
   element.addEventListener('click', () => clickNumber(element.value));
 });
 function clickNumber(input: string) {
+  if (mode === 'remote') return;
   let output = document.getElementById("output");
   if (input === ".") {
     let screenDisplay = output.textContent;
@@ -30,8 +31,24 @@ function clickNumber(input: string) {
   }
 }
 
+const Plus = document.getElementById('plusButton');
+Plus.addEventListener('click', () => clickOperator(plus));
+const Minus = document.getElementById('minusButton');
+Minus.addEventListener('click', () => clickOperator(minus));
+const Mult = document.getElementById('multButton');
+Mult.addEventListener('click', () => clickOperator(mult));
+const Div = document.getElementById('divButton');
+Div.addEventListener('click', () => clickOperator(div));
+const Mod = document.getElementById('mod');
+Mod.addEventListener('click', () => clickOperator(mod));
+const xPwrY = document.getElementById('xPowerY');
+xPwrY.addEventListener('click', () => clickOperator(xPowerY));
+const yRtX = document.getElementById('yRootX');
+yRtX.addEventListener('click', () => clickOperator(yRootX));
+
 // operator selection
 function clickOperator(operator) {
+  if (mode === 'remote') return;
   let output: HTMLElement = document.getElementById("output");
   let p: String = output.textContent;
   let sci: HTMLElement = document.getElementById('sci');
@@ -84,6 +101,7 @@ function result(operator: Function) {
 const getResult = document.getElementById('equalButton');
 getResult.addEventListener('click', () => equal());
 function equal() {
+  if (mode === 'remote') return;
   let output: HTMLElement = document.getElementById("output");
   let num: Number | String = output.textContent;
   if (mode === 'basic') {
@@ -249,6 +267,7 @@ function mod(x: Number, y: Number) {
 const sqrPwr = document.getElementById('xPower');
 sqrPwr.addEventListener('click', () => sqrPower())
 function sqrPower() {
+  if (mode === 'remote') return;
   let output: HTMLElement = document.getElementById("output");
   let num: String = output.textContent;
   if (num !== "") {
@@ -262,6 +281,7 @@ function sqrPower() {
 const sqrRt = document.getElementById('sqrRoot');
 sqrRt.addEventListener('click', () => sqrRoot());
 function sqrRoot() {
+  if (mode === 'remote') return;
   let output: HTMLElement = document.getElementById("output");
   let num: String = output.textContent;
   if (num !== "") {
@@ -305,6 +325,7 @@ async function BinaryConverter() {
   let num = output.textContent;
   num = String(Math.round(Number(num)));
   let hist = document.getElementById('histLog');
+  if (mode === 'remote') return;
   if (num !== '' && num !== '-') {
     try {
       let url = 'https://networkcalc.com/api/binary/' + num + '?from=10&to=2';

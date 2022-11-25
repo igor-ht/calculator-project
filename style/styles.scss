@@ -12,8 +12,7 @@ html{
   }
 }
 
-/* setting for screen size bigger than 1024px */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) { /* setting for screen size bigger than 1024px */
   html{
     width: 100%;
     background-color: black;

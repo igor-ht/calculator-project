@@ -58,14 +58,18 @@ function openSci() {
     const x = document.getElementById("sci");
     const sciButton = document.getElementById('sciButton');
     if (x.style.display === "grid") {
-        mode = 'basic';
         x.style.display = "none";
         sciButton.style.backgroundColor = 'rgba(128, 128, 128, 0.661)';
+        if (mode === 'remote')
+            return;
+        mode = 'basic';
     }
     else {
-        mode = 'sci';
         x.style.display = "grid";
         sciButton.style.backgroundColor = 'yellowgreen';
+        if (mode === 'remote')
+            return;
+        mode = 'sci';
     }
 }
 // light/dark mode feature for screen display
@@ -89,8 +93,12 @@ function lightMode() {
 const remoteButton = document.getElementById('remoteButton');
 remoteButton.addEventListener('click', () => remoteMode());
 function remoteMode() {
-    const sci = document.getElementById('sci');
-    const hist = document.getElementById('hist');
+    firstNumber = '';
+    secondNumber = '';
+    mathOperation = undefined;
+    oppArray = [];
+    allNum = [];
+    mode = 'remote';
     activeRemote();
 }
 const formRemote = document.querySelector('form');
@@ -99,14 +107,22 @@ function activeRemote() {
     let input = document.getElementById('formRemote');
     let screen = document.getElementById('output');
     let button = document.getElementById('remoteButton');
+    let sci = document.getElementById('sci');
     if (input.style.display === 'block') {
         input.style.display = 'none';
         screen.style.display = 'block';
+        screen.innerHTML = '';
         button.style.backgroundColor = 'rgba(128, 128, 128, 0.661)';
+        if (sci.style.display === 'grid') {
+            mode = 'sci';
+        }
+        else
+            mode = 'basic';
     }
     else {
         input.style.display = 'block';
         screen.style.display = 'none';
+        screen.innerHTML = '';
         button.style.backgroundColor = 'yellowgreen';
     }
 }
