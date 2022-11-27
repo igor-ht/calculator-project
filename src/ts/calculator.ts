@@ -10,25 +10,25 @@ const allDigits: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.dig
 allDigits.forEach(element => { 
   element.addEventListener('click', () => clickNumber(element.value));
 });
+
 function clickNumber(input: string) {
   if (mode === 'remote') return;
   let output = document.getElementById("output");
-  if (input === ".") {
-    let screenDisplay = output.textContent;
-    let check = screenDisplay.includes(input);
-    if (screenDisplay.length == 0 || screenDisplay === "-") {
-      return;
-    } else {
-      if (check === false) {
-        output.innerHTML += input;
-        return;
-      } else {
-        return;
-      }
-    }
-  } else {
-    output.innerHTML += input;
+  let screenDisplay = output.textContent;
+  if (screenDisplay === '-0' && input !== '.') {
+    output.innerHTML = '-' + input;
+    return
   }
+  if (screenDisplay === '0' && input !== '.') {
+    output.innerHTML = input;
+    return;
+  }
+  if (input === ".") {
+    if (screenDisplay === '0.' || screenDisplay === "-" || screenDisplay === '')  return;
+    let check = screenDisplay.includes(input);
+    if (check === true) return;
+  }
+  output.innerHTML += input;
 }
 
 const Plus = document.getElementById('plusButton');
@@ -323,6 +323,7 @@ toBinary.addEventListener('click' , () => BinaryConverter());
 async function BinaryConverter() {
   let output = document.getElementById('output');
   let num = output.textContent;
+  if (num === '') return;
   num = String(Math.round(Number(num)));
   let hist = document.getElementById('histLog');
   if (mode === 'remote') return;

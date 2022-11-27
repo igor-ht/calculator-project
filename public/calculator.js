@@ -13,25 +13,23 @@ function clickNumber(input) {
     if (mode === 'remote')
         return;
     let output = document.getElementById("output");
+    let screenDisplay = output.textContent;
+    if (screenDisplay === '-0' && input !== '.') {
+        output.innerHTML = '-' + input;
+        return;
+    }
+    if (screenDisplay === '0' && input !== '.') {
+        output.innerHTML = input;
+        return;
+    }
     if (input === ".") {
-        let screenDisplay = output.textContent;
-        let check = screenDisplay.includes(input);
-        if (screenDisplay.length == 0 || screenDisplay === "-") {
+        if (screenDisplay === '0.' || screenDisplay === "-" || screenDisplay === '')
             return;
-        }
-        else {
-            if (check === false) {
-                output.innerHTML += input;
-                return;
-            }
-            else {
-                return;
-            }
-        }
+        let check = screenDisplay.includes(input);
+        if (check === true)
+            return;
     }
-    else {
-        output.innerHTML += input;
-    }
+    output.innerHTML += input;
 }
 const Plus = document.getElementById('plusButton');
 Plus.addEventListener('click', () => clickOperator(plus));
@@ -338,6 +336,8 @@ toBinary.addEventListener('click', () => BinaryConverter());
 async function BinaryConverter() {
     let output = document.getElementById('output');
     let num = output.textContent;
+    if (num === '')
+        return;
     num = String(Math.round(Number(num)));
     let hist = document.getElementById('histLog');
     if (mode === 'remote')

@@ -51,7 +51,7 @@ html a:visited {
     justify-content: center;
   }
   html .set .main .infoPopUp p {
-    font-size: larger;
+    font-size: medium;
     color: white;
     margin: 2%;
   }

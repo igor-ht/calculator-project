@@ -128,7 +128,7 @@ function activeRemote() {
 }
 async function getRemoteResult() {
     let input = document.querySelector('form');
-    let expression = document.querySelector('input');
+    let expression = input.querySelector('input');
     let expr = encodeURIComponent(expression.value);
     let url = 'http://api.mathjs.org/v4/?expr=' + expr;
     let response = await fetch(url);
