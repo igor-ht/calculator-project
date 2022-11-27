@@ -2,7 +2,7 @@ let firstNumber = undefined;
 let secondNumber = undefined;
 let mathOperation: Function = undefined;
 let oppArray: any[] = [];
-let allNum: String[] = []
+let allNum: String[] = [];
 let mode: string = 'basic';
 
 // numbers click

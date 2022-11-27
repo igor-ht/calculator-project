@@ -2,10 +2,10 @@
   "name": "calculator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "build": "sass style/styles.scss style/styles.css",
-    "dev": "sass style/styles.scss style/styles.css --watch",
+    "build": "sass src/styles.scss public/styles.css",
+    "dev": "sass src/styles.scss public/styles.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

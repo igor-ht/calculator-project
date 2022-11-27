@@ -6,6 +6,6 @@
       "ES2021"
     ],
     "watch": true,
-    "outDir": "ts/js"
+    "outDir": "public"
   }
 }
