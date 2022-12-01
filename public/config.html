@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html{
+      background-color: black;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body{
+      height: 100%;
+      width: 100%;
+      background-color: black;
+      align-items: center;
+    }
+    
+    h1{
+      color: white;
+      text-align: center;
+      margin-top: 5%;
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      border-style: dashed;
+      color: black;
+      background-color: white;
+      height: 60%;
+      width: 50%;
+      font-size: x-large;
+      margin-left: 23%;
+      margin-top: 5%;
+    }
+
+    p{
+      margin-bottom: 0%;
+    }
+
+
+  </style>
+  <title>Set your design!</title>
+</head>
+<body>
+  <h1>Set your own calculator's design</h1>
+  <form action="./index.html">
+    <label for="backgroundColor">Choose your background color:</label>
+    <select name="bg-color" id="backgroundColor">
+      <option value="">-- Choose an option --</option>
+      <option value="blue">Blue</option>
+      <option value="red">Red</option>
+      <option value="yellow">Yellow</option>
+      <option value="pink">Pink</option>
+      <option value="green">Green</option>
+    </select>
+    <label for="fontStyle">Choose your font:</label>
+    <select name="font-style" id="fontStyle">
+      <option value="">-- Choose an option --</option>
+      <option value="courier">Courier New</option>
+      <option value="timesNewRoman">Times New Roman</option>
+      <option value="georgia">Georgia</option>
+      <option value="verdana">Verdana</option>
+      <option value="arial">Arial</option>
+    </select>
+    <p>Choose a mode:</p>
+    <label for="darkMode">Dark Mode (default mode)</label>
+    <input type="radio" name="mode" id="darkMode" value="" checked>
+    <label for="lightMode">Light Mode</label>
+    <input type="radio" name="mode" id="lightMode" value="lightMode">
+    <input type="submit" placeholder="Submit" id="submit">
+  </form>
+
+</body>
+</html>
