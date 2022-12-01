@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html id="html" class="">
+  
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCalculator</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+
+  <body class="set" id="set">
+    <!-- main part of calculator -->
+    <div class="main">
+      <div id="infoPopUp" class="infoPopUp">
+        <button type="button" id="closePopUp">
+          <strong>x</strong>
+        </button>
+        <p>
+          Developer name: Igor Hamburger<br>
+          Calculator Version: 1.0<br>
+          Digital calculator with all basics functions and scientific calculator.
+        </p>
+      </div>
+      <!-- output display -->
+      <div class="screenDisplay" id="screenDisplay">
+        <p id="output"></p>
+        <form method="post" onsubmit="return false" class="formRemote" id="formRemote">
+          <input type="text" id="textInsert" name="expr" title="type your equation! only numbers and math symbols" required>
+          <input type="submit" placeholder="Submit" id="submitRemote">
+        </form>
+      </div>
+ 
+      <!-- left side buttons -->
+      <div class="left-buttons">
+        <a href="config.html" target="_blank"><button type="button" id="settingButton" class="settings-button" title="Set your own calculator design"><p>&#9881</p></button></a>
+        <button type="button" id="infoButton" class="info-button" title="Informations"><p>&#9432</p></button>        
+        <button type="button" id="lightButton" class="light-button" title="ScreenDisplay light"><p>&#128262</p></button>
+        <button type="button" id="histButton" class="hist-button" title="Operations history"><p>&#128366</p></button>
+        <button type="button" id="sciButton" class="scientific-mode" title="Scientifc Calculator"><p>&#8319&#8730x</p></button>
+        <button type="button" id="remoteButton" class="basic-mode" title="Remote Mode"><p>&#9729</p></button>
+      </div>
+
+      <!-- right side buttons -->
+      <div class="right-buttons">
+        <button type="button" id="eraseButton"><p>&#9003</p></button>
+        <button type="button" id="divButton"><p>&#247</p></button>        
+        <button type="button" id="multButton"><p>&#215</p></button>
+        <button type="button" id="minusButton"><p>&#8722</p></button>
+        <button type="button" id="plusButton"><p>&#43</p></button>
+        <button type="button" id="equalButton"><p>=</p></button>
+      </div>
+        
+      <!-- digits buttons -->
+      <div class="numbers">
+        <button type="button" value="7" class="digits"><p>7</p></button>
+        <button type="button" value="8" class="digits"><p>8</p></button>
+        <button type="button" value="9" class="digits"><p>9</p></button>
+        <button type="button" value="4" class="digits"><p>4</p></button>
+        <button type="button" value="5" class="digits"><p>5</p></button>
+        <button type="button" value="6" class="digits"><p>6</p></button>
+        <button type="button" value="1" class="digits"><p>1</p></button>
+        <button type="button" value="2" class="digits"><p>2</p></button>
+        <button type="button" value="3" class="digits"><p>3</p></button>
+        <button type="button" id="plusMinus"><p>&#177</p></button>
+        <button type="button" value="0" class="digits"><p>0</p></button>
+        <button type="button" value="." class="digits"><p>.</p></button>
+        <button type="button" id="resetButton" class="reset"><p>C</p></button>
+      </div>
+    </div>
+
+    <!-- scientific part -->
+    <div class="scientific" id="sci">
+      <p class="sci-title">&#8319&#8730x Scientific</p>
+      <div class="sci-features">
+        <button type="button" id="xPower"><p>x&#178</p></button>
+        <button type="button" id="sqrRoot"><p>&#178&#8730x</p></button>
+        <button type="button" id="mod"><p>mod</p></button>
+        <button type="button" id="xPowerY"><p>xʸ</p></button>
+        <button type="button" id="yRootX"><p>&#696&#8730x</p></button>
+        <button type="button" id="pi"><p>&#960</p></button>
+        <button type="button" id="baseTwo" class="base2"><p>Base&#8322</p></button>
+      </div>
+    </div>
+
+    <!-- history log part -->
+    <div class="history" id="hist">
+      <div class="hist-title">
+        <button type="button" id="refresh">Refresh</button><p>&#128366 Operations log</p>
+      </div>
+      <div class="history-display">
+        <p id="histLog"></p>
+      </div>
+    </div>
+
+    <script src="application.js"></script>
+    <script src="calculator.js"></script>
+  </body>
+</html>
