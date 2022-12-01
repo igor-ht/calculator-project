@@ -36,6 +36,7 @@ html{
       grid-area: 1/2/2/3;
       width: 100%;
       height: 100%;
+      overflow: auto;
 
       .infoPopUp {
         grid-area: 1/2/2/5;
